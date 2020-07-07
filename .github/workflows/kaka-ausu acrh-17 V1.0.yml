@@ -22,7 +22,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+#######    runs-on: ubuntu-latest
 
     steps:
 
@@ -34,7 +34,7 @@ jobs:
       - name: Space cleanup
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: |
+########        run: |
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
@@ -54,11 +54,11 @@ jobs:
           df -h
 
       - name: Update feeds
-        run: |
+ ######       run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Generate configuration file
+########      - name: Generate configuration file
         run: |
           rm -f ./.config*
           touch ./.config
